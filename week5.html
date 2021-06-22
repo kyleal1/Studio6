@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Studio 6 - Weeks 5-8</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="week1.html">Week 1 - 4</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="week5.html">Week 5 - 8</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/background.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Weeks 5-8</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+<h4>Week 5</h4>
+<p>Week 5 was relatively uneventful. More planning of the DB2 server was done from both Jordan and I.</p>
+<p>At the end of week 5, we had a short meeting with Ange from ISS to discuss the build of the DB2 server, any potential networking issues, anything ISS needed to organise and any potential security risks.
+Given that the DB2 server was going to be managed by its own network security group and open ports will be kept to a minimal, there wasn't much risk to the machine and no risk to any other VM running in Azure.</p>
+<p>After this meeting, Rob expressed his happiness in the work we had achieved so far.</p>
+
+
+<h4>Week 6</h4>
+<p>At the start of week 6, we had our planning signed off by Rob and permission to start the build process of the DB2 server.</p>
+<p>The build began by deploying the appropriate sized VM. This was the first hands-on experience I had with Azure for building a server.
+We didn't want to give this VM a public IP address at this stage due to potential security risks, and I undertook the task of exploring Bastion to connect to the VM.
+This was a relatively easy process, although slightly confusing at times, but we managed to connect successfully with Bastion.</p>
+
+<h4>Week 7</h4>
+<p>Week 7 we began setting up the server for its purpose of hosting MariaDB. Jordan installed MariaDB and while I planned how to configure it and what needed to be done with it, Jordan 
+set up Apache2 and phpmyAdmin.</p>
+
+<p>The first task I needed to do was find what SQL databases currently exist on the existing DB2 server, where they are located and who needs access to them.
+I did find it a challenge to locate the SQL databases but reading through the existing labs and from my own experience, I knew Sakila existed, as well as a weather database.
+</p>
+
+<p>With limited access to the database, I was unable to locate the .SQL database files to transfer to our new machine. I was able to find a fresh copy of Sakila online, and I needed to go through
+and compare the contents of the new database with the existing database. This was simple, simply load the database and check which tables existed and select data from each table.
+Each table was the same, as well as the contents so I loaded this into the new DB2 server, accessed it and made sure all data was there.</p>
+
+<h4>Week 8</h4>
+<p>Week 8 was finishing off the import of data into the database. I could not locate the weather database that existed on the current DB2 server and needed to ask Rob if he could find it
+so it could be transferred over to the new server. This was done and weather was loaded onto the new server. </p>
+
+<p>At the end of week 8, I located all the scripts to load users onto the database, create local MySQL databases and grant permissions. These were located on Teams as I had done 
+the DB2 load the previous semester and had done a lot of work with the scripts.</p>
+
+<p>Due to an increased workload outside of the Polytechnic as well as some personal things I needed to deal with, I left it at that for week 8.
+By this stage, Jordan had taken on leadership of the build, especially as he had more experience with PhpmyAdmin and the networking side of the build.
+There was a lot I didn't understand in regards to assigning DNS entries, SSL certificates, how to authenticate these. Jordan did these tasks while I watched and asked questions.
+I was able to offer some help as there was previous documentation regarding SSL certificates which I showed to Jordan and he was able to successfully upload and authenticate these.
+</p>
+
+<br>
+
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+
+            <li class="list-inline-item">
+              <a href="https://github.com/kyleal1" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
