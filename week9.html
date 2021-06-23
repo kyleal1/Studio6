@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Studio 6 - Weeks 9-12</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="week1.html">Week 1 - 4</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="week5.html">Week 5 - 8</a>
+          </li>
+		  		  <li class="nav-item">
+            <a class="nav-link" href="week9.html">Week 9 - 12</a>
+          </li>
+		  		  		  <li class="nav-item">
+            <a class="nav-link" href="week13.html">Week 13 - 16</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/background.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Weeks 9-12</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+<h4>Week 9</h4>
+<p>Week 9 consisted of testing all the scripts on the new server. A few errors were spotted where users were not being created properly. Minor modifications to a line in the script
+fixed this and another test run later that day was successful.</p>
+<p>The second script, to manage the MySQL side of the server (creation of users, permissions set on databases) was then tested. This was mostly successful but Rob came to us after looking
+through PhpmyAdmin and discovering a few permission errors on certain databases. An additional GRANT statement was added to the script and this issue was resolved. Going back to Rob and asking him
+to look through PhpmyAdmin again, he was happy the issue had been rectified and all users had their correct permissions including root or admin users.</p>
+
+<h4>Week 10</h4>
+<p>By week 10, the DB2 server was nearing completion with just minor house-keeping needed, and documentation to be completed. Since Jordan had done a lot of the smaller setups and configuration,
+I let him undertake the task of completing documentation and a set up guide.</p>
+
+<p>I had now finished focusing on DB2, other than demonstrations and to help Jordan with any questions.</p>
+
+<p>I decided to turn my attention to the DB3 course. Rob always said DB3 never needed to be looked at this semester, but it was always going to be nice if it did get looked into. He was happy if 
+2021 Semester 2 students started looking into it as it wasn't neccessary for this year, but given DB2 was near completion, I decided to start working on this.</p>
+
+<p>First task began with refreshing myself on how DB3 was run. Going through labs and reading through my previously created DB3 load script, I remembered DB3 ran on 2 servers.
+A Ubuntu Docker server where students would launch MSSQL Docker containers, and a Windows Server server where students would perform various DBA tasks.
+Talking with Rob, we needed to decide on the appropriate solution, would we look into a similar 'lift and shift' that we did with DB2, or could we explore hosted services options?
+Going through what students need to do and what they need to achieve, we couldn't find a simple hosted service solution, and decided for simplicity, ease of use and not having to spend the time 
+to further educate lecturers on how to use new software, a lift and shift was the way to go.</p>
+
+<h4>Week 11</h4>
+<p>Next step after we decided on a lift and shift option, was to go into the DB3 servers and see what type of hardware these servers are running, what software, and check if there is any current resource issues.
+If we are merging into Azure servers, it makes sense to explore the options of upgrades, both with hardware and software.</p>
+
+<p>I started looking into the DB3 Docker server first as this was the most accessible and I also like to try and further my knowledge and experience with Docker and containers.
+The DB3 Docker server runs 2 virtual CPU's, 16GB RAM, and an 80GB HDD. Looking into the CPU's more, these were expensive server CPU's running 12 cores each @ 2.2Ghz. 
+A concern for me was going to be the cost of running a machine, similarly or better specc'd, in the cloud. DB2 was a relatively low cost course to set up, and running this single 
+Docker server was going to be more than the cost to run DB2 alone.</p>
+
+<p>I had a conversation with Rob and expressed my concern about the cost involved. I feel like I have a duty to optimise costs as much as possible for Otago Polytechnic because as a business,
+you want to minimise outgoing or ongoing costs, but at the same time we want to deliver a high quality of service and teaching.
+I gave Rob a list of servers similar to what we were currently running and approximate costs. To my surprise, Rob assured me that all of these were within budget for the Polytechnic
+and I could continue exploring options.</p>
+
+<h4>Week 12</h4>
+<p>During week 12 I was exploring Azure VM options. DB3 Docker is a very memory intensive server and I needed to look into VMs built for a specific purpose.
+This was all new to me as DB2 was able to be run on a general purpose VM.</p>
+
+<p>I looked into VMs and was overwhelmed by all the different series, purposed and the great variance in price. I got in touch with both Rob and Faisal to help point me in the direction
+of learning which VMs were going to be suitable and to learn about each series of VMs</p>
+
+<p>Faisal pointed me in the direction of an Azure resource which went through each series. After looking into it, a B series VM was looking to be suitable.
+The B stands for burstable. This was talking about CPU performance. A burstable VM's CPU will run at a baseline performance percentage but during high loads, that percentage can burst offering higher performance during high loads.
+This burst varies for each machine, but after consulting with Rob, a B2mS server looked like a good option to explore. That particular VM runs at 60% but can burst to 200%.
+<br><br>
+A burstable VM looked like a good option as high loads would only be expected during class times where students are launching and working with containers. Assuming 2 streams of classes with 4 hours class time each per week, the VM would run
+at its full capacity for 8 hours per week, but allowing some additional time for students working outside of classroom hours.
+
+<br>
+
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+
+            <li class="list-inline-item">
+              <a href="https://github.com/kyleal1" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

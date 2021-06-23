@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Studio 6 - Weeks 13-16</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="week1.html">Week 1 - 4</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="week5.html">Week 5 - 8</a>
+          </li>
+		  		  <li class="nav-item">
+            <a class="nav-link" href="week9.html">Week 9 - 12</a>
+          </li>
+		  		  		  <li class="nav-item">
+            <a class="nav-link" href="week13.html">Week 13 - 16</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/background.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Weeks 13-16</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+
+
+
+<h4>Week 13</h4>
+<p>Faisal came to me in week 12 with a Capture The Flag challenge video. He said it was quite cool and asked if I could recreate it and possibly
+add additional tasks as it would be something fun to do, it would be educational for both myself and any other students interested in taking my challenge and
+it would look good on my portfolio. Link to the video <a href="https://www.youtube.com/watch?v=PpGF_t4weQk&t=1231s&ab_channel=MichaelCrump"> here </a></p>
+
+<p>I created this CTF challenge using a very basic Azure VM. There were 2 flags in the challenge. One involved checking Apache2 log files for a Curl command to a specific web address. The 
+other involved me zipping up an image file and hiding it within another file. This file was hidden as a .png when it was a zip file. I made it even harder by changing file names to messages 
+encrypted using ROT13. The challenge wasn't designed to be hard, but to get students thinking logically, transversing systems finding clues and to get them to think about security. It was also
+a bit of fun towards the end of the semester, where everyone is stressing.</p>
+
+<p>By the end of Week 12, I had launched the VM with a public IP address and written instructions for students. I uploaded this to Teams so students could access everything. I showed Faisal and students
+were to message him when they'd found the flags and what they contained.</p>
+
+<p>Finishing the Capture The Flag challenge, I focused my attention back on DB3 Docker and started on a build plan. This closely resembled the DB2 plan as I was reading through Jordan's plan,
+but was a lot more simplistic as at its roots, the DB3 Docker server is simply a Ubuntu server running Docker with no additional software.</p>
+
+<p>One thing I was uncertain of was network configuration as we need a range of ports open for Docker. I went through the current Docker server and saw it was running UFW. I read these rules, some of which
+were unclear to me so I messaged Rob asking to clarify some rules. We came to the conclusion that a lot of rules would now be unneccesary and to keep a range of ports open for Docker so 
+students could remotely connect to their containers.</p>
+
+<p>
+I then planned in which order I wanted to build the server to keep it most secure given it would have a public IP address. I started with all ports closed, opening port 22 for SSH access but gave the only
+active account a secure password so risk to the machine was very low. My plan was to then set up Docker, create the appropriate admin accounts, adjust the firewall through the Azure Network Security Group and
+then finalise configuration.</p>
+
+<p>I finalised my plan and sent it off to Rob at the end of this week.</p>
+
+<h4>Week 14</h4>
+<p>In between weeks 13 and the start of week 14, Rob got back to me and signed off on my build plan saying it looked good. I started work on the server immediately, given there was only 2 weeks of the semester left.</p>
+
+<p>The build was quite simple therefore didn't take a lot of time. Following the build plan, I provisioned a B2mS server. Created neccessary accounts. Set up Docker and edited the Network Security Group for the firewall rules
+in the build plan. I then assigned a static IP. I launched a Docker container to check that Docker was running correctly and this was successful.
+
+<p>In the second half of the week, I decided to stress test the server. When DB3 is running, multiple containers will be running and resource issues had been apparent in a previous configuration of the DB3 Docker server.
+This is where I discovered that the B2mS server was lacking enough resources to cope with the classroom load. I launched 10 containers simultaneously, and the server became very laggy to the point it was unresponsive. I 
+checked memory usage and memory usage of the 8GB RAM was 100%. Increasing RAM in a VM is not possible in Azure, you instead need to resize the VM. I contacted Rob to let him know what I had discovered and he agreed a resize
+was neccessary and suggested a starting point of 16GB RAM. I looked into more B series VMs with 16GB RAM and the monthly cost was very excessive.<br><br>
+
+We discussed hardware requirements again and it was said that CPU performance is less important than memory performance as Docker is very memory intensive, therefore an E series memory optimised server would be better.
+I found a server, slightly more expensive with similar specs but an increase to 16GB of RAM. I resized to this VM, a simple task, simply deallocate the current VM and resize in Azure Portal which retains all your configuration,
+and began stress testing again. I was able to launch 20 containers simultaneously, an expected load for a class environment, but we were pushing RAM to near 100% with next to no room to spare. I sent Rob through a screenshot of all
+20 containers running and the amount of free memory and we decided we needed another increase, he suggested a VM with 24GB or 32GB RAM. 24GB RAM would have been most ideal but Azure did not provide a VM with 24GB RAM. I 
+let Rob know this along with the cost of a VM running 32GB RAM. The price was within budget and we agreed to resize once again. Benefits of this is a much upgraded machine than the current one and no worry of resource issues.
+<br><br>
+I resized the VM again and did another stress test. I capped my stress test at 20 containers as this is very close to anything that will be run in the class environment. I sent through the current memory usage which was sitting
+a touch above 16GB leaving almost 16GB free. Rob, myself and the server were much happier and this was going to be the final VM size that was needed.</p> 
+
+<h4>Week 15</h4>
+<p>Week 15 was largely spent working on documentation and doing final configuration on the DB3 Docker server.
+DB3 students connect to their containers via SSMS and I needed to verify whether we could connect from SSMS to our new servers containers. This is when I discovered that we couldn't. I informed Rob and
+adjusted firewall rules in Azure to temporarily allow all traffic in and out. This didn't solve our issue. I launched multiple containers using different ports and was successful in connecting on one port, 1433.
+<br><br>I let Rob know what was happening and he looked into it further, querying ISS. 1433 is a port open on the Otago Polytechnic network but the other port ranges we were trying were closed so we concluded that the OP firewall
+was the issue and that when it came to running this new server, the OP firewall would need adjusting. Later that night, I tested the theory by connecting to a container from my home network on various ports and all connected 
+successfully. I let Rob know and he was happy as this was a minor issue that was out of our control but it meant the configuration of the servers firewall and setup was working as expected.</p>
+
+<h4>Week 16</h4>
+<p>Week 16 marks the final week of the semester. A lot of this was also spent on documentation as the students next semester will be left to finish the remainder of the DB3 Azure merge and good documentation
+will make their job much simpler. I well documented the installation and set up guide of the DB3 Docker server. The cases of stress testing and needing to resize the VM were well documented. The documentation 
+contained a lot of reasons why we're doing tasks a particular way. </p>
+
+<p>Once I was happy with the DB3 server, I shut it off, compiled all documentation from the current server and the new server including proposals and build guides, scripts and KeePass files and transferred these onto Teams 
+in a centrally located, easy to find place. In 2020 when I performed the DB2 load, we were set back weeks due to lack of any documentation. I did not want to pass a similar problem onto other students. I put these in Teams,
+sent Rob a message saying I'm happy to say the DB3 Docker server is complete and directed him where to find all these resources.</p>
+
+<p>Rob was happy with all of this and happy with the progress I had made. He suggested for the few days left of the semester, to have a look around the DB3 Windows Server. He had to make an itintern account on this for me to access
+and I was then able to have a look at a Windows Server as I'd never worked with one before from a DevOps point of view.
+
+<br>
+
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+
+            <li class="list-inline-item">
+              <a href="https://github.com/kyleal1" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
